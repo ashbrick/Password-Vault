@@ -55,7 +55,7 @@ ROOT_URLCONF = 'vault.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], #telling django where to look for templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
