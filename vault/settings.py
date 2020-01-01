@@ -117,12 +117,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+#static_root : when you deploy an application, you run a command called collectstatic that goes through all of your apps and if there's a static folder it takes everything out and puts it into a root static folder
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'vault/static')
+]
 
 #django_heroku.settings(locals())    #tried to add this to help with heroku deployment but it's keeping the server from running
