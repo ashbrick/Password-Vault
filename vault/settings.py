@@ -125,4 +125,4 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-django_heroku.settings(locals())
+#django_heroku.settings(locals())    #tried to add this to help with heroku deployment but it's keeping the server from running
