@@ -29,9 +29,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# anytime you create a new app it needs to be added to this list
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
+    'passwords.apps.PasswordsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

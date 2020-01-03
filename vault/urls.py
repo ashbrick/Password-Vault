@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('home.urls')), #this is whatever the first segment of the url for the home app is going to be, going to leave it blank so it can just be a slash -- linking to urls.py of the home app, need to bring in "include" because it's part of the django package, so add it to line 2 after path
+    path('passwords/', include('passwords.urls')), #linking the passwords urls.py to the main urls.py by telling it where to look
     path('admin/', admin.site.urls),
 ]
