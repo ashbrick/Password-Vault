@@ -29,9 +29,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# anytime you create a new app it needs to be added to this list
 INSTALLED_APPS = [
     'home.apps.HomeConfig',
+    'passwords.apps.PasswordsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,8 +77,8 @@ WSGI_APPLICATION = 'vault.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'vault'
     }
 }
 

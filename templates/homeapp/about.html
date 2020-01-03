@@ -1,5 +1,91 @@
 {% extends 'base.html' %}
+<!-- the extends 'base.html' above has to be the first line when creating a partial -->
+
+{% load static %}
+<!-- load static allows you to pull in content from the static folder (like images) -->
 
 {% block content %}
 <h1>About</h1>
+
+<!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <!-- CREATING A LINK: <a href="index.html"> placeholder needs to be changed to squidhat syntax in order to pull it in from urls.py where its path is defined in the urlpatterns list -->
+            <a href="{% url 'index' %}"
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> About</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="about" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Keep Your Information Secure</h2>
+          <p class="lead">No more worrying about creating and remembering your passwords! </p>
+          <img src="{% static 'img/about.jpg' %}" alt="">
+<!-- for the image you want to bring in, you have to change it to the curly squid hat {% static 'img/about.jpg' %} -->
+          <p class="mt-4">Here at The Vault, we keep everything simple and secure so that you don't have to. The Vault was created as a safe place to keep track of all of your usernames, passwords, and their corresponding websites. </p>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="{% static 'img/computer-lock.jpg' %}" alt="padlock on a computer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Created By -->
+  <section id="created-by" class="bg-dark text-white text-center">
+    <div class="container">
+    <h2 class="display-4">Created by Ashley Brickhouse</h2>
+      <div class="row">
+          <div class="col-sm">
+            GITHUB
+          </div>
+          <div class="col-sm">
+            LINKEDIN
+          </div>
+          <div class="col-sm">
+            PORTFOLIO
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credits and Links -->
+  <section id="team" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Technologies Used</h2>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <h4>Backend</h4>
+          <img src="{% static 'img/python-logo.png' %}" alt="python logo" class="rounded-circle mb-3">
+            <p>Python 3</p>
+            <p>Django</p>
+        </div>
+
+        <div class="col-md-4">
+          <h4>Frontend</h4>
+          <img src="{% static 'img/bootstrap.png'}" alt="bootstrap logo" class="rounded-circle mb-3">
+            <p>Bootsrap</p>
+            <p>CSS</p>
+        </div>
+
+        <div class="col-md-4">
+          <h4>Database</h4>
+          <img src="{% static 'img/postgres.png' %}" alt="postgres logo" class="rounded-circle mb-3">
+            <p>PostgreSQL</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 {% endblock %}

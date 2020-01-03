@@ -1,5 +1,50 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Home</h1>
+
+<!-- Showcase -->
+ <section id="showcase">
+   <div class="container text-center">
+     <div class="home-search p-5">
+       <div class="overlay p-5">
+         <h1 class="display-4 mb-4">
+           Welcome to The Vault
+         </h1>
+         <p class="intro">Keep all of your login information safe and organized in one place. Whether you choose to store your personally created passwords or generate a random new password, your information will stay safe in your own personal vault.</p>
+<!-- form for registering or logging in  -->
+         <div class="home-buttons">
+           <button type="submit" name="sign-up">Sign Up</button>
+           <button type="submit" name="login">Login</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+
+ <section id="services" class="py-5 bg-secondary text-white">
+   <div class="container">
+     <div class="row text-center">
+       <div class="col-md-4">
+         <i class="fas fa-comment fa-4x mr-4"></i>
+         <hr>
+         <h3>Organize</h3>
+         <p>View all of your usernames and passwords in one place. They're automatically alphabetized according to their respective sites.</p>
+       </div>
+       <div class="col-md-4">
+         <i class="fas fa-home fa-4x mr-4"></i>
+         <hr>
+         <h3>Keep Safe</h3>
+         <p>Any passwords that you create are automatically encrypted to keep your information safe. No one but you will be able to see your passwords.</p>
+       </div>
+       <div class="col-md-4">
+         <i class="fas fa-suitcase fa-4x mr-4"></i>
+         <hr>
+         <h3>Create, Edit, Delete</h3>
+         <p>You can safely create your own password or generate a random one. Then you have the ability to edit and/or delete at any time.</p>
+       </div>
+     </div>
+   </div>
+ </section>
+
 {% endblock %}
