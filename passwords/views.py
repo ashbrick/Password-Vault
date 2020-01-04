@@ -12,11 +12,11 @@ def index(request): #main passwords page
     context = {
      'passwords': passwords
     }
-
+    #load this template to show the index of all passwords
     return render(request, 'passwords/passwords.html', context)
 
-def password(request): #individual password page, so it will load this template
-    return render(request, 'passwords/password.html')
+def password(request, password_id): #individual password page, setting the parameters as request (to request page load) and password_id (to pull data based on the password_id) will load this template
+    return render(request, 'passwords/password.html') #password.html is the template for showing one password
 
 def search(request): #will load the search password html page from urls.py
     return render(request, 'passwords/search.html')
