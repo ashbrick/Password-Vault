@@ -124,7 +124,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-# Extra places for collectstatic to find static files.
+# Extra places for collectstatic to find static files. Tells Django to look in the root directory for the static folder
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'vault/static')
 ]
