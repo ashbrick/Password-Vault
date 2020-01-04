@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# setting the BASE_DIR (base directory) as a variable so I can use it later to tell Django where to look for files
+# build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -123,7 +124,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
-# Extra places for collectstatic to find static files.
+# Extra places for collectstatic to find static files. Tells Django to look in the root directory for the static folder
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'vault/static')
 ]

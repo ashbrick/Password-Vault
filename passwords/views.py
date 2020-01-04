@@ -38,8 +38,14 @@ def password(request, password_id): #individual password page, setting the param
 #==================
 #   SEARCH/QUERY: method for search form
 #==================
-def search(request): #will load the search password html page from urls.py
-    return render(request, 'passwords/search.html')
+def search(request, password_website): #will load the search password html page from urls.py
+
+    password = get_object(Password, pk=password_id)
+
+    context = {
+    'password': password
+    }
+    return render(request, 'passwords/search.html', context)
 
 
 
