@@ -4,6 +4,10 @@ from django.urls import path #bringing in path package
 from . import views #from all import views
 
 urlpatterns = [ #creating a list for accessing each page
-    path('', views.index, name='index'), #views.index is the method, and the name allows us to easily access this path
+    path('', views.index, name='index'),
+    # '' is the route (will be just a slash)
+    # views.index is the method
+    # the name defines a key/value pair that allows us to easily access this path
+
     path('about',views.about, name='about') #creating the method for the about page
 ]
