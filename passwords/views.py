@@ -38,13 +38,22 @@ def password(request, password_id): #individual password page, setting the param
 #==================
 #   SEARCH/QUERY: method for search form
 #==================
-def search(request, password_website): #will load the search password html page from urls.py
 
-    password = get_object(Password, pk=password_id)
+#will load the search password html page from urls.py
+def search(request):
+    queryset_list = Password.objects.order_by('website') #setting it to the Password model, to pull in all of the password objects, and will alphabetize them (order_by)
+
+    # add filter for website
+    # test to see if it exists
+    if 'website' in request.GET:
+        website = request.GET['website'] # if it exists then get the value of website and store in variable website
+        if website: # filtering it based on the data chosen by the dropdown
+            queryset_list = queryset_list.filter(website__iexact=website)
 
     context = {
-    'password': password
+        'passwords': queryset_list
     }
+
     return render(request, 'passwords/search.html', context)
 
 
@@ -53,5 +62,14 @@ def search(request, password_website): #will load the search password html page 
 
 ############### CODE GRAVEYARD #################
 
-# ---> this ended up not working because i entered the dummy websites starting with www. so it was only recognizing the w's // solution: a search feature instead
+# ----- INDEX ORDER_BY ERROR> this ended up not working because i entered the dummy websites starting with www. so it was only recognizing the w's // solution: a search feature instead
 #    passwords = Password.objects.all().order_by('website') #should alphebetize based on the first letter of each word, ascending is default, but if you want to go in descending order then use '-website'
+
+
+# ----- SEARCH ERROR -----> couldn't retrieve data and redirect to show page
+# def search(request): #will load the search password html page from urls.py
+#     password = get_object(Password, k=password_website)
+#     context = {
+#     'password': password
+#     }
+#     return render(request, 'passwords/search.html')
