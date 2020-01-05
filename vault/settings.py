@@ -130,4 +130,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'vault/static')
 ]
 
+# Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
+
 #django_heroku.settings(locals())    #tried to add this to help with heroku deployment but it's keeping the server from running

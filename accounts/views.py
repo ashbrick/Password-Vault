@@ -4,17 +4,16 @@ from django.shortcuts import render, redirect
 
 #defining register, takes request as parameter
 def register(request):
-    #conditional to determine if the request is a POST or GET
-    if request.method == 'POST': #if it's equal to post
-        print('SUBMITTED') #testing to see if post request is made (will show up in terminal)
-        return redirect('register') #then redirect back to register page
-        
-    else: #else render the form
-    #return the requested data and the template it's assigned to
+    if request.method == 'POST':
+        return  # register user
+    else:
         return render(request, 'accounts/register.html')
 
 def login(request):
-    return render(request, 'accounts/login.html')
+    if request.method == 'POST':
+        return # log user in
+    else:
+        return render(request, 'accounts/login.html')
 
 def logout(request):
     return redirect('index') #redirects user to index
@@ -22,3 +21,28 @@ def logout(request):
 
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')
+
+
+
+
+
+#### TESTS ########################################
+
+#==========
+#   def register(request):
+#==========
+    #Testing >>> SUCCESSFUL
+    ### create conditional to determine if the request is a POST or GET
+    ### if it's equal to post
+    ### test to see if post request is made ('SUBMITTED' will show up in terminal)
+    ### then redirect back to register page
+
+    # if request.method == 'POST':
+    #     print('SUBMITTED')
+    #     return redirect('register')
+
+    ### else render the form
+    ### and return the requested data and the template it's assigned to
+
+    # else:
+    #     return render(request, 'accounts/register.html')
