@@ -12,6 +12,8 @@
                 <i class="fas fa-user-plus"></i> Register</h4>
             </div>
             <div class="card-body">
+<!-- ALERTS -->
+            {% include 'partials/_alerts.html' %}
                 <form action="{% url 'register' %}" method="POST">
 <!-- csrf_token for security, marries form to user's current session and prevents browser hacking-->
                   {% csrf_token %}

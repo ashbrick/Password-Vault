@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 # Create your views here by adding methods from routes (urls.py)
 
 #defining register, takes request as parameter
 def register(request):
     if request.method == 'POST':
-        return  # register user
+        messages.error(request, 'testing')
+        return redirect('register') # register user
     else:
         return render(request, 'accounts/register.html')
 
