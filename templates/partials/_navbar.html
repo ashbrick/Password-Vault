@@ -43,13 +43,25 @@
                 <a class="nav-link" href="{% url 'passwords' %}">Enter Vault</a>
               </li>
             </ul>
-
+<!-- adding conditional so if on that page, it's highlighted -->
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item mr-3">
+              <li
+                {% if 'register' in request.path %}
+                  class="nav-item active mr-3"
+                {% else %}
+                  class="nav-item mr-3"
+                {% endif %}
+              >
                 <a class="nav-link" href="{% url 'register' %}">
-                  <i class="fas fa-user-plus"></i> Sign Up </a>
+                  <i class="fas fa-user-plus"></i> Register </a>
               </li>
-              <li class="nav-item mr-3">
+              <li
+                {% if 'login' in request.path %}
+                  class="nav-item active mr-3"
+                {% else %}
+                  class="nav-item mr-3"
+                {% endif %}
+              >
                 <a class="nav-link" href="{% url 'login' %}">
                   <i class="fas fa-sign-in-alt"></i> Login </a>
               </li>
