@@ -24,5 +24,7 @@ urlpatterns = [
 
     path('passwords/', include('passwords.urls')), #linking the passwords urls.py to the main urls.py by telling it where to look
 
+    path('accounts/', include('accounts.urls')),
+
     path('admin/', admin.site.urls),
 ]
