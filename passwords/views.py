@@ -1,9 +1,29 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 #this will allow us to fetch passwords based on the model, then insert into template in order to loop through passwords in database
 from .models import Password #bring in the Password model
+from django.views.generic.edit import UpdateView
+from .forms import PostForm
+from django.contrib import messages
+
+# class PasswordUpdate(UpdateView):
+#     model = Password
+#     fields = ['website', 'username', 'password']
+#     template_name_suffix = '_update_form'
 
 # Create your view methods here based on the urls.py for passwords
+
+#==================
+#   CREATE: method for creating a password
+#==================
+# def create(request):
+#     if request.method == 'POST':
+#         form = PostForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#         return redirect('index')
+#     form = PostForm()
+#     return render(request, 'passwords/create.html', {'form': form})
 
 #==================
 #   INDEX PAGE: method for the index/home page
@@ -28,12 +48,34 @@ def password(request, password_id): #individual password page, setting the param
     #have to bring in the "get_object_or_404" method by importing it from django.shortcuts (top of page)
 
     context = {
-    'password': password
+    'password': password_id
     }
 
     return render(request, 'passwords/password.html', context)
         # password.html is the template for showing one password
         # context parameter is the variable where the schema/model info for an individual password is stored based on the password variable (where get_object... is stored above)
+
+#==================
+#   UPDATE/EDIT: method for editing passwords
+#==================
+# def edit(request, pk, template_name='passwords/edit.html'):
+#     password = get_object_or_404(Password, pk=password_id)
+#     form = PostForm(request.POST or None, instance=password)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('passwords')
+#     return render(request, template_name, {'form':form})
+
+#==================
+#   DELETE: method for deleting a password
+#==================
+# def delete(request, pk, template_name='passwords/password.html'):
+#     password = get_object_or_404(Password, pk=password_id)
+#     if request.method == 'POST':
+#         password.delete()
+#         return redirect('index')
+#     else:
+#         return render(request, template_name, {'object':password})
 
 #==================
 #   SEARCH/QUERY: method for search form
@@ -73,3 +115,17 @@ def search(request):
 #     'password': password
 #     }
 #     return render(request, 'passwords/search.html')
+
+# ------- EDIT ROUTE ------->
+    # if request.method == 'POST':
+    #     print('POSTED')
+
+        # get the data from the form
+    #     website = request.POST['website']
+    #     username = request.POST['username']
+    #     password = request.POST['password']
+    #
+    #     return
+    #     password = Password.objects.update_password(username=username, password=password, website=website)
+    # else:
+    #     return redirect('index')

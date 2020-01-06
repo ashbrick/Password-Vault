@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 # Create your views here by adding methods from routes (urls.py)
 
+#==================
+#   Register
+#==================
 #defining register, takes request as parameter
 def register(request):
     if request.method == 'POST':
@@ -38,17 +41,41 @@ def register(request):
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
-
+#==================
+#   LOGIN
+#==================
 def login(request):
+    #check to make sure it's post request (submitting a form)
     if request.method == 'POST':
-        return # log user in
+        #get the variables we need to login
+        username = request.POST['username'] # get username from the form
+        password = request.POST['password'] # get password from the form
+
+        # create variable called user and set it to auth, then attach the authenticate method and pass 2 parameters: the username and password that were submitted in the form
+        # auth was imported above from django.contrib
+        user = auth.authenticate(username=username, password=password)
+
+        # see if user can be found in the database
+        if user is not None:
+            auth.login(request, user) # authorize login based on request and user
+            messages.success(request, 'You are logged in') # alert with this message if successful
+            return redirect('dashboard') # take user to their dashboard
+        else:
+            messages.error(request, 'Invalid credentials') # send this message if username or password don't match what's in database
+            return redirect('login') # take user back to login page again 
     else:
         return render(request, 'accounts/login.html')
 
+#==================
+#   LOGOUT
+#==================
 def logout(request):
     return redirect('index') #redirects user to index
     #import redirect
 
+#==================
+#   DASHBOARD
+#==================
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')
 
