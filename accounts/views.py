@@ -62,7 +62,7 @@ def login(request):
             return redirect('dashboard') # take user to their dashboard
         else:
             messages.error(request, 'Invalid credentials') # send this message if username or password don't match what's in database
-            return redirect('login') # take user back to login page again 
+            return redirect('login') # take user back to login page again
     else:
         return render(request, 'accounts/login.html')
 
@@ -70,7 +70,12 @@ def login(request):
 #   LOGOUT
 #==================
 def logout(request):
-    return redirect('index') #redirects user to index
+    # if it's a post request
+    if request.method == 'POST':
+        auth.logout(request) # user logout
+        messages.success(request, 'You have successfully logged out') #send user message
+        return redirect('index') # take them to the index page
+    return redirect('index') # redirects user to index
     #import redirect
 
 #==================
