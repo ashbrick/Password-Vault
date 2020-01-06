@@ -51,7 +51,16 @@
         <ul class="navbar-nav ml-auto">
           <!-- if user is logged in successfully -->
           {% if user.is_authenticated %}
-            logged in
+          <li
+          {% if 'dashboard' in request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+            <a class="nav-link" href="{% url 'dashboard' %}">
+              Welcome, {{ user.username }} (Dashboard) </a>
+          </li>
           {% else %}
             <li
             {% if 'register' in request.path %}
@@ -63,7 +72,6 @@
               <a class="nav-link" href="{% url 'register' %}">
                 <i class="fas fa-user-plus"></i> Register </a>
             </li>
-
             <li
             {% if 'login' in request.path %}
               class="nav-item active mr-3"
