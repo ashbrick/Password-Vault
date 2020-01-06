@@ -36,18 +36,65 @@
   <section id="show-pword">
     <div class="container">
       <button type="button" name="button"><a href="{% url 'passwords' %}">Back to My Vault</a></button>
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h3> {{ password.website }} </h3>
-        </div>
-        <div class="col-md-12 pword-block">
-          <h3> {{ password.username }} </h3>
-        </div>
-        <div class="col-md-12">
-          <h3> {{ password.password }} </h3>
-        </div>
-      </div>
+
+      <!-- <div class="row text-center">
+        {% if passwords %}
+          {% for password in passwords %}
+            <div class="col-md-12">
+              <h3> {{ password.website }} </h3>
+            </div>
+            <div class="col-md-12 pword-block">
+              <h3> {{ password.username }} </h3>
+            </div>
+            <div class="col-md-12">
+              <h3> {{ password.password }} </h3>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="col-md-12">
+            <p>No passwords</p>
+          </div>
+        {% endif %}
+      </div> -->
     </div>
   </section>
+
+  <!-- PASSWORDS LIST -->
+    <section id="passwords" class="">
+      <div class="container">
+        <div class="password-list">
+
+  <!-- TABLE with Passwords -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"> Id </th>
+                <th scope="col"> Website </th>
+                <th scope="col"> Username </th>
+                <th scope="col"> Password </th>
+              </tr>
+            </thead>
+            <tbody>
+  <!--  CONDITIONAL TO LOOP THROUGH PASSWORDS DB -->
+              {% if passwords %}
+                {% for password in passwords %}
+                <tr>
+                  <th scope="row"> {{ password.id }} </th>
+                  <td name="website"> {{ password.website }} </td>
+                  <td> {{ password.username }} </td>
+                  <td> <a href="{% url 'password' password.id %}" class="btn pword-btn"> {{ password.password }}</a> </td>
+                </tr>
+                {% endfor %}
+              {% else %}
+                <div class="col-md-12">
+                  <p>No passwords match that search</p>
+                </div>
+              {% endif %}
+            <tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
 
  {% endblock %}

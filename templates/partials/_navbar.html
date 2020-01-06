@@ -1,59 +1,89 @@
 {% load static %}
 <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
-        <div class="container">
-  <!-- create link for index using squidhats -->
-          <a class="navbar-brand" href="{% url 'index' %}">
-            <img src="{% static 'img/logo.png' %}" class="logo" alt="">
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul class="navbar-nav">
-  <!-- setting up conditional for link in navbar so if you're on that page it will stay highlighted-->
-              <li
-                {% if '/' == request.path %}
-                  class="nav-item active mr-3"
-                {% else %}
-                  class="nav-item mr-3"
-                {% endif %}
-              >
-    <!-- create link that takes you to index when Home is clicked -->
-                <a class="nav-link" href="{% url 'index' %}">Home</a>
-              </li>
-              <li
-                {% if 'about' in request.path %}
-                  class="nav-item active mr-3"
-                {% else %}
-                  class="nav-item mr-3"
-                {% endif %}
-              >
-    <!-- create link for about  -->
-                <a class="nav-link" href="{% url 'about' %}">About</a>
-              </li>
-    <!-- create link for individual vault -->
-              <li
-                {% if 'passwords' in request.path %}
-                  class="nav-item active mr-3"
-                {% else %}
-                  class="nav-item mr-3"
-                {% endif %}
-              >
-                <a class="nav-link" href="{% url 'passwords' %}">Enter Vault</a>
-              </li>
-            </ul>
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
+    <div class="container">
+      <!-- create link for index using jinja templating engine (squidhats) -->
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'img/logo.png' %}" class="logo" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item mr-3">
-                <a class="nav-link" href="register.html">
-                  <i class="fas fa-user-plus"></i> Sign Up </a>
-              </li>
-              <li class="nav-item mr-3">
-                <a class="nav-link" href="login.html">
-                  <i class="fas fa-sign-in-alt"></i> Login </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+        <ul class="navbar-nav">
+<!-- setting up conditional for link in navbar so if you're on that page it will stay highlighted-->
+          <li
+          {% if '/' == request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+<!-- create link that takes you to index when Home is clicked -->
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
+
+          <li
+          {% if 'about' in request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+<!-- create link for about  -->
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+
+<!-- create link for individual vault -->
+          <li
+          {% if 'passwords' in request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+            <a class="nav-link" href="{% url 'passwords' %}">Enter Vault</a>
+          </li>
+        </ul>
+
+<!-- adding conditional so if on that page, it's highlighted -->
+        <ul class="navbar-nav ml-auto">
+          <!-- if user is logged in successfully -->
+          {% if user.is_authenticated %}
+          <li
+          {% if 'dashboard' in request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+            <a class="nav-link" href="{% url 'dashboard' %}">
+              Welcome, {{ user.username }} (Dashboard) </a>
+          </li>
+          {% else %}
+            <li
+            {% if 'register' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+              <a class="nav-link" href="{% url 'register' %}">
+                <i class="fas fa-user-plus"></i> Register </a>
+            </li>
+            <li
+            {% if 'login' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+              <a class="nav-link" href="{% url 'login' %}">
+                <i class="fas fa-sign-in-alt"></i> Login </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
