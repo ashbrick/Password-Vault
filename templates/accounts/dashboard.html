@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %} | Dashboard {% endblock %}
 {% block content %}
 <h1>Dashboard</h1>
 
@@ -18,5 +18,7 @@
   </div>
 </section>
 
+<!-- ALERTS -->
+{% include 'partials/_alerts.html' %}
 
 {% endblock %}
