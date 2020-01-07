@@ -3,27 +3,11 @@ from django.shortcuts import get_object_or_404, render, redirect
 #this will allow us to fetch passwords based on the model, then insert into template in order to loop through passwords in database
 from .models import Password #bring in the Password model
 from django.views.generic.edit import UpdateView
-from .forms import PostForm
+from .forms import PasswordForm
 from django.contrib import messages
-
-# class PasswordUpdate(UpdateView):
-#     model = Password
-#     fields = ['website', 'username', 'password']
-#     template_name_suffix = '_update_form'
+# from django.contrib.auth.models import User
 
 # Create your view methods here based on the urls.py for passwords
-
-#==================
-#   CREATE: method for creating a password
-#==================
-# def create(request):
-#     if request.method == 'POST':
-#         form = PostForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('index')
-#     form = PostForm()
-#     return render(request, 'passwords/create.html', {'form': form})
 
 #==================
 #   INDEX PAGE: method for the index/home page
@@ -39,6 +23,28 @@ def index(request): #main passwords page
     }
     #load this template to show the index of all passwords
     return render(request, 'passwords/passwords.html', context)
+
+#==================
+#   CREATE: method for creating a password
+#==================
+def create(request):
+    print('============= 1111111111')
+    form = PasswordForm()
+    if request.method == "POST":
+        print(' > > > > > > 22222222222')
+        # website = request.POST['website']
+        # username = request.POST['username']
+        # password = request.POST['password']
+
+        form = PasswordForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('passwords')
+
+    context = {'form':form}
+    print('< < < < < < < 3333333333333 ')
+    return render(request, 'passwords/create.html', context)
+
 
 #==================
 #   SHOW PAGE: method for single password view
@@ -58,12 +64,23 @@ def password(request, password_id): #individual password page, setting the param
 #==================
 #   UPDATE/EDIT: method for editing passwords
 #==================
+# def password_edit(request):
+#     return render(request, 'passwords/password_edit.html')
+
+# def edit(request, pk):
+#     password = get_object_or_404(Password, pk=password_id)
+#     form = PostForm(request.POST or None, instance=password)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('passwords/passwords.html')
+#     return render(request, 'passwords/edit.html', {'form':form})
+
 # def edit(request, pk, template_name='passwords/edit.html'):
 #     password = get_object_or_404(Password, pk=password_id)
 #     form = PostForm(request.POST or None, instance=password)
 #     if form.is_valid():
 #         form.save()
-#         return redirect('passwords')
+#         return redirect('passwords/passwords.html')
 #     return render(request, template_name, {'form':form})
 
 #==================
@@ -109,12 +126,12 @@ def search(request):
 
 
 # ----- SEARCH ERROR -----> couldn't retrieve data and redirect to show page
-# def search(request): #will load the search password html page from urls.py
-#     password = get_object(Password, k=password_website)
-#     context = {
-#     'password': password
-#     }
-#     return render(request, 'passwords/search.html')
+    # def search(request): #will load the search password html page from urls.py
+    #     password = get_object(Password, k=password_website)
+    #     context = {
+    #     'password': password
+    #     }
+    #     return render(request, 'passwords/search.html')
 
 # ------- EDIT ROUTE ------->
     # if request.method == 'POST':
@@ -129,3 +146,54 @@ def search(request):
     #     password = Password.objects.update_password(username=username, password=password, website=website)
     # else:
     #     return redirect('index')
+
+# -------- CREATE ROUTE -------->
+    #======> 1st attempt
+    # def create(request):
+    #     if request.method == 'POST':
+    #         form = PostForm(request.POST)
+    #         if form.is_valid():
+    #             form.save()
+    #         return redirect('index')
+    #     form = PostForm()
+    #     return render(request, 'passwords/create.html', {'form': form})
+
+    #======> 2nd attempt
+    # def create(request):
+    #     if request.method == "GET":
+    #         form = PasswordForm()
+    #         return render(request, 'passwords/create.html', {'form':form})
+    #     else:
+    #         if request.method == "POST":
+    #             form = PasswordForm(request.POST) # create form instance, add data from the request
+    #             if form.is_valid():
+    #                 form.save()
+    #             return redirect('passwords')
+
+    #=======> 3rd attempt
+    # def create(request):
+    # print('create request went through')
+    # if request.method == "GET":
+    #     print('request.method for GET worked!')
+    #     form = PasswordForm() # import PasswordForm and create a variable
+    #     return render(request, 'passwords/create.html',{'form':form})
+    #     print('GET request worked')
+    #
+    # else:
+    #     form = PasswordForm()
+    #     if request.method == "POST":
+    #         # website = request.POST['website']
+    #         # username = request.POST['username'] # get username from the form
+    #         # password = request.POST['password'] # get password from the form
+    #
+    #         print('HEY')
+    #     # pass it into context dictionary
+    #         form = PasswordForm(request.POST)
+    #         if form.is_valid():
+    #             form.save() # ModelForm saves new info into database
+    #             # return redirect('/passwords/'+password_id)
+    #             return redirect('passwords')
+    #
+    # context = {'form':form}
+    # # render form in template
+    # return render(request, 'passwords/create.html', context)

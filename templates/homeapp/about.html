@@ -7,19 +7,18 @@
 {% block title %} | About {% endblock %}
 
 {% block content %}
-<h1>About</h1>
 
 <!-- Breadcrumb -->
   <section id="bc" class="mt-3">
     <div class="container">
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb bg-dark">
           <li class="breadcrumb-item">
             <!-- CREATING A LINK: <a href="index.html"> placeholder needs to be changed to squidhat syntax in order to pull it in from urls.py where its path is defined in the urlpatterns list -->
-            <a href="{% url 'index' %}"
-              <i class="fas fa-home"></i> Home</a>
+            <a href="{% url 'index' %}" class="text-light">
+            Home</a>
           </li>
-          <li class="breadcrumb-item active"> About</li>
+          <li class="breadcrumb-item active text-warning" aria-current="page"> About</li>
         </ol>
       </nav>
     </div>

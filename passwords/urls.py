@@ -8,11 +8,11 @@ urlpatterns = [ #creating a list for accessing each page
 
     path('<int:password_id>', views.password, name='password'), #include id parameter in url
 
+    # path('password_edit/<int:password_id>', views.password_edit, name='password_edit'),
+
     path('search', views.search, name='search'), #anything that has password/ should look at this search file because it's linked to the main urls.py
 
-    # path('create', views.create, name='create'),
-    #
-    # path('edit/<int:password_id>/', views.edit, name='edit'),
-    #
+    path('create', views.create, name='create'),
+
     # path('delete/<int:password_id', views.delete, name='delete'),
 ]
