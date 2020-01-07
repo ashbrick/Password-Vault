@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # setting the BASE_DIR (base directory) as a variable so I can use it later to tell Django where to look for files
 # build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -138,4 +139,5 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-#django_heroku.settings(locals())    #tried to add this to help with heroku deployment but it's keeping the server from running
+#   activate Django-Heroku
+django_heroku.settings(locals())    
