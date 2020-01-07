@@ -1,0 +1,62 @@
+#header {
+  height: 50px;
+  background: #3a3a3a;
+  color: #ffffff;
+}
+
+#branding h1 {
+  color: #cf1717;
+}
+
+a:link,
+a:visited {
+  color: #6D6E71;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+#user-tools a:hover {
+  color: #f2c57c;
+  font-style: oblique;
+  text-decoration: none;
+}
+
+div.breadcrumbs {
+  background: #f2c57c;
+  color: #3a3a3a;
+}
+
+div.breadcrumbs a{
+  color: #000000;
+}
+
+div.breadcrumbs a:hover {
+  color: #3a3a3a;
+  font-style: oblique;
+}
+
+.module h2, .module caption, .inline-group h2 {
+  background: #3a3a3a;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+  background: #3a3a3a;
+  color: #ffffff;
+}
+
+.button, .submit-row input:hover {
+  background: #6d6e71;
+}
+
+
+.submit-row input.default {
+  background: #f2c57c;
+  color: #3a3a3a;
+}
+
+.submit-row input.default:hover {
+  background: #3a3a3a;
+  color: #f2c57c;
+}

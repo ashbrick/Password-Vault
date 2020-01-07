@@ -1,0 +1,9 @@
+button, a, .btn {
+  text-decoration: none;
+  color: black;
+}
+
+.delete-btn {
+  text: black;
+  text-align:center;
+}
