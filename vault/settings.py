@@ -83,7 +83,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'vault',
-        'HOST': 'localhost'
+        'USER': 'eokbdzyftcnmir',
+        'PASSWORD': '3d147fccb979bff5d1098589905ddc93553762c46980433a2af61cc52bf020da',
+        'HOST': 'ec2-107-21-113-60.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -140,4 +143,4 @@ MESSAGE_TAGS = {
 }
 
 #   activate Django-Heroku
-django_heroku.settings(locals())    
+django_heroku.settings(locals())
