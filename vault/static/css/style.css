@@ -1,5 +1,9 @@
-footer, .footer {
-  margin-top: 100px;
-  position: relative;
-  min-height: 100%;
+button, a, .btn {
+  text-decoration: none;
+  color: black;
+}
+
+.delete-btn {
+  text: black;
+  text-align:center;
 }

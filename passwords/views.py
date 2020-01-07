@@ -28,10 +28,10 @@ def index(request): #main passwords page
 #   CREATE: method for creating a password
 #==================
 def create(request):
-    print('============= 1111111111')
+    print('============= 1111111111- testing')
     form = PasswordForm()
     if request.method == "POST":
-        print(' > > > > > > 22222222222')
+        print(' > > > > > > 22222222222- testing')
         # website = request.POST['website']
         # username = request.POST['username']
         # password = request.POST['password']
@@ -42,14 +42,14 @@ def create(request):
             return redirect('passwords')
 
     context = {'form':form}
-    print('< < < < < < < 3333333333333 ')
+    print('< < < < < < < 3333333333333- testing')
     return render(request, 'passwords/create.html', context)
 
 
 #==================
 #   SHOW PAGE: method for single password view
 #==================
-def password(request, password_id): #individual password page, setting the parameters as request (to request page load) and password_id (to pull data based on the password_id) will load this template
+def password_show(request, password_id): #individual password page, setting the parameters as request (to request page load) and password_id (to pull data based on the password_id) will load this template
     password = get_object_or_404(Password, pk=password_id) #variable that checks to see if the individual listing page exists and if not it will show a 404 not found page, passing in 2 parameters: the model and the primaary key/id. password_id is also being passed in as a parameter in the urls.py file for the single listing path inside the urlpatterns list ( as '<int:password_id>' ) which shows the id of the individual password in the browser
     #have to bring in the "get_object_or_404" method by importing it from django.shortcuts (top of page)
 
@@ -57,7 +57,7 @@ def password(request, password_id): #individual password page, setting the param
     'password': password_id
     }
 
-    return render(request, 'passwords/password.html', context)
+    return render(request, 'passwords/password_show.html', context)
         # password.html is the template for showing one password
         # context parameter is the variable where the schema/model info for an individual password is stored based on the password variable (where get_object... is stored above)
 
@@ -67,13 +67,20 @@ def password(request, password_id): #individual password page, setting the param
 # def password_edit(request):
 #     return render(request, 'passwords/password_edit.html')
 
-# def edit(request, pk):
-#     password = get_object_or_404(Password, pk=password_id)
-#     form = PostForm(request.POST or None, instance=password)
-#     if form.is_valid():
-#         form.save()
-#         return redirect('passwords/passwords.html')
-#     return render(request, 'passwords/edit.html', {'form':form})
+def passwordEdit(request, pk):
+    password = Password.objects.get(password_id=pk)
+    # # password = get_object_or_404(Password, pk=password_id)
+    # form = PasswordForm(instance=password)
+    #
+    # if request.method == 'POST':
+    #     form = PasswordForm(request.POST, instance=task)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('passwords/password_show.html')
+    #
+    # context = {'form':form}
+
+    return render(request, 'passwords/password_edit.html', {'form':form})
 
 # def edit(request, pk, template_name='passwords/edit.html'):
 #     password = get_object_or_404(Password, pk=password_id)
@@ -86,6 +93,15 @@ def password(request, password_id): #individual password page, setting the param
 #==================
 #   DELETE: method for deleting a password
 #==================
+def delete(request, password_id):
+    if request.method == 'POST':
+        password = Password.objects.get(password_id=password_id)
+        password.delete()
+        messages.success(request, 'Password has been deleted')
+        return redirect('passwords')
+    else:
+        return render(request, 'passwords/passwords.html')
+
 # def delete(request, pk, template_name='passwords/password.html'):
 #     password = get_object_or_404(Password, pk=password_id)
 #     if request.method == 'POST':
