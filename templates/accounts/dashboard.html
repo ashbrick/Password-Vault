@@ -1,24 +1,71 @@
 {% extends 'base.html' %}
 {% block title %} | Dashboard {% endblock %}
 {% block content %}
-<h1>Dashboard</h1>
 
 <!-- Breadcrumb -->
-<section id="bc" class="mt-3">
-  <div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="{% url 'index' %}">
-            <i class="fas fa-home"></i> Home</a>
-        </li>
-        <li class="breadcrumb-item active"> Dashboard</li>
-      </ol>
-    </nav>
-  </div>
-</section>
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-dark">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}" class="text-light">
+            Home</a>
+          </li>
+          <li class="breadcrumb-item active text-warning" aria-current="page"> Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
 
 <!-- ALERTS -->
 {% include 'partials/_alerts.html' %}
+
+<!-- Password Option Cards -->
+  <section id="dash-options" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Welcome, {{ user }}!</h2>
+          <br>
+        </div>
+<!-- Option Card: Create -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Create A New Password</h5>
+              <p class="card-text">Create your own password and enter it manually.</p>
+              <a href="{% url 'create' %}" class="btn btn-warning">Create</a>
+            </div>
+          </div>
+        </div>
+
+<!-- Option Card: Edit -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Edit Password</h5>
+              <p class="card-text">Change and update existing password information.</p>
+              <a href="#" class="btn btn-warning">Edit</a>
+            </div>
+          </div>
+        </div>
+
+<!-- Option Card: Delete -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Delete Password</h5>
+              <p class="card-text">Clear all password information, including the username and website.</p>
+              <a href="{% url 'passwords' %}" class="btn btn-warning">Delete</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
 
 {% endblock %}

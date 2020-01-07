@@ -5,6 +5,12 @@ from django.contrib.auth.models import User
 # Create your views here by adding methods from routes (urls.py)
 
 #==================
+#   DASHBOARD
+#==================
+def dashboard(request):
+    return render(request, 'accounts/dashboard.html')
+
+#==================
 #   Register
 #==================
 #defining register, takes request as parameter
@@ -41,6 +47,7 @@ def register(request):
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
+
 #==================
 #   LOGIN
 #==================
@@ -58,7 +65,6 @@ def login(request):
         # see if user can be found in the database
         if user is not None:
             auth.login(request, user) # authorize login based on request and user
-            messages.success(request, 'You are logged in') # alert with this message if successful
             return redirect('dashboard') # take user to their dashboard
         else:
             messages.error(request, 'Invalid credentials') # send this message if username or password don't match what's in database
@@ -70,19 +76,17 @@ def login(request):
 #   LOGOUT
 #==================
 def logout(request):
+    print('logging out')
     # if it's a post request
     if request.method == 'POST':
+        print('logging you out')
         auth.logout(request) # user logout
-        messages.success(request, 'You have successfully logged out') #send user message
+        messages.success(request, 'You are logged out') #send user message
         return redirect('index') # take them to the index page
     return redirect('index') # redirects user to index
     #import redirect
 
-#==================
-#   DASHBOARD
-#==================
-def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+
 
 
 

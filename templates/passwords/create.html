@@ -1,44 +1,36 @@
 {% extends 'base.html' %}
-{% load widget_tweaks %}
 
 {% block content %}
 
-<h1>create</h1>
+<h4>Create New Password</h4>
 
-<div class="container-fluid">
- <div class="row">
-  <div class="col-md-1 col-xs-1 col-sm-1"></div>
+<form id="create_form" action="{% url 'create' %}" method="POST">
+  {% csrf_token %}
+  {% if user.is_authenticated %}
+    <input type="hidden" name="user_id" value="{{ user.id }}">
+  {% else %}
+    <input type="hidden" name="user_id" value="0">
+  {% endif %}
 
-  <div  class="col-md-10 col-xs-10 col-sm-10 ">
-  <br/>
-   <h6 style="text-align:center;"><font color="red"> All fields are required</font> </h6>
-  </div>
-  <div class="col-md-1 col-xs-1 col-sm-1">
-  </div>
- </div>
- <div class="row">
-  <div class="col-md-1 col-xs-1 col-sm-1"></div>
-  <div class="col-md-10 col-xs-10 col-sm-10">
-   <form method="post" novalidate>
-     {% csrf_token %}
-{% for hidden_field in form.hidden_fields %}
-       {{ hidden_field }}
-     {% endfor %}
-{% for field in form.visible_fields %}
-       <div class="form-group">
-         {{ field.label_tag }}
-         {% render_field field class="form-control" %}
-         {% if field.help_text %}
-           <small class="form-text text-muted">{{ field.help_text }}</small>
-         {% endif %}
-       </div>
-     {% endfor %}
-<button type="submit" class="btn btn-primary">post</button>
-   </form>
-   <br>
-  </div>
-  <div class="col-md-1 col-xs-1 col-sm-1"></div>
- </div>
-</div>
+  {% for field in form.visible_fields %}
+    {{ field.errors }}
+    {{ field.help_text }}
+    {{ field }}
+  {% endfor %}
+  <input type="submit" name="Submit">
+</form>
 
-{% endcontent %}
+
+{% endblock %}
+
+
+<!-- <form id="create_form" action="{% url 'create' %}" method="POST">
+  {% csrf_token %}
+  {% if user.is_authenticated %}
+    <input type="hidden" name="user_id" value="{{ user.id }}">
+  {% else %}
+    <input type="hidden" name="user_id" value="0">
+  {% endif %}
+  {{ form }}
+  <input type="submit" name="Submit">
+</form> -->

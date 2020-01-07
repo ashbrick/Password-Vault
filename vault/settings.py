@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'passwords.apps.PasswordsConfig',
     'accounts.apps.AccountsConfig',
-    'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,7 +81,8 @@ WSGI_APPLICATION = 'vault.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vault'
+        'NAME': 'vault',
+        'HOST': 'localhost'
     }
 }
 

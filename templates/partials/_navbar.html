@@ -36,6 +36,16 @@
           </li>
 
 <!-- create link for individual vault -->
+          <!-- <li
+          {% if 'passwords' in request.path %}
+            class="nav-item active mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          > -->
+
+          <!-- if user is logged in successfully, then show Enter vault -->
+          {% if user.is_authenticated %}
           <li
           {% if 'passwords' in request.path %}
             class="nav-item active mr-3"
@@ -45,11 +55,12 @@
           >
             <a class="nav-link" href="{% url 'passwords' %}">Enter Vault</a>
           </li>
+          {% endif %}
         </ul>
 
 <!-- adding conditional so if on that page, it's highlighted -->
         <ul class="navbar-nav ml-auto">
-          <!-- if user is logged in successfully -->
+          <!-- if user is logged in successfully, then show dashboard -->
           {% if user.is_authenticated %}
           <li
           {% if 'dashboard' in request.path %}
@@ -69,6 +80,7 @@
               <form action="{% url 'logout' %}" method="POST" id="logout">
                 {% csrf_token %}
                 <input type="hidden">
+              </form>
           {% else %}
             <li
             {% if 'register' in request.path %}
@@ -95,3 +107,5 @@
       </div>
     </div>
   </nav>
+
+  
