@@ -16,10 +16,18 @@ def index(request): #main passwords page
     #fetch passwords from database by creating a variable and setting it to the variable name
     passwords = Password.objects.all() #shows all password info from db
 
+    form = PasswordForm()
+
+    if request.method == 'POST':
+        form = PasswordForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('passwords')
 
     #create a variable to pass in the passwords as parameter for the return render
     context = {
-     'passwords': passwords
+     'passwords': passwords,
+     'form':form
     }
     #load this template to show the index of all passwords
     return render(request, 'passwords/passwords.html', context)
@@ -27,23 +35,20 @@ def index(request): #main passwords page
 #==================
 #   CREATE: method for creating a password
 #==================
-def create(request):
-    print('============= 1111111111- testing')
-    form = PasswordForm()
-    if request.method == "POST":
-        print(' > > > > > > 22222222222- testing')
-        # website = request.POST['website']
-        # username = request.POST['username']
-        # password = request.POST['password']
-
-        form = PasswordForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('passwords')
-
-    context = {'form':form}
-    print('< < < < < < < 3333333333333- testing')
-    return render(request, 'passwords/create.html', context)
+# def create(request):
+#     print('============= 1111111111- testing')
+#     form = PasswordForm()
+#     if request.method == "POST":
+#         print(' > > > > > > 22222222222- testing')
+#
+#         form = PasswordForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('passwords')
+#
+#     context = {'form':form}
+#     print('< < < < < < < 3333333333333- testing')
+#     return render(request, 'passwords/create.html', context)
 
 
 #==================
