@@ -41,7 +41,7 @@ def register(request):
                     # login automatically after registering
                     auth.login(request, user) #bring in from django.contrib
                     messages.success(request, 'You are registered, and logged in')
-                    return redirect('index')
+                    return redirect('dashboard')
         else:
             messages.error(request, 'Passwords do not match')
             return redirect('register')
