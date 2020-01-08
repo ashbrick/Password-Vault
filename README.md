@@ -25,6 +25,7 @@ List of features that are functional and TODOs for future development
 * Show page for each password with edit functionality
 * Improve styling all around
 * Make forms more responsive and add styling
+* Get search form to work so user can search for specific password
 
 ## Built With These Technologies
 * [Python 3](https://www.python.org/): programming language
