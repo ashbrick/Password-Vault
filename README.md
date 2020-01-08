@@ -23,6 +23,7 @@ List of features that are functional and TODOs for future development
 ## To-Do's
 * User can save passwords to their own profile
 * Show page for each password with edit functionality
+* User can generate random new password by clicking "Generate Random" button
 * Improve styling all around
 * Make forms more responsive and add styling
 * Get search form to work so user can search for specific password
