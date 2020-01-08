@@ -3,14 +3,31 @@
 {% block title %} | Delete {% endblock %}
 {% block content %}
 
-<p>Are you sure you want to delete "{{ password }}"?</p>
+<br>
+<br>
+<br>
+<br>
 
-<form class="" action="{% url 'delete' password.id %}" method="POST">
-  {% csrf_token %}
+<div class="confirm-prompt text-center">
+  <h3>Are you sure you want to delete "{{ password }}" ?</h3>
+<br>
+  <form class="" action="{% url 'delete' password.id %}" method="POST">
+    {% csrf_token %}
 
-  <a href="{% url 'passwords' %}">Cancel</a>
+    <button
+    type="button"
+    class="btn btn-warning"
+    style="width:20%"
+    name="cancel">
+    <a href="{% url 'passwords' %}">Cancel</a></button>
 
-  <input type="submit" name="Confirm">
-</form>
+    <input
+    class="btn btn-danger"
+    style="width:20%"
+    type="submit"
+    name="Confirm">
+  </form>
+</div>
+
 
 {% endblock %}
