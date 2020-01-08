@@ -7,3 +7,7 @@ button, a, .btn {
   text: black;
   text-align:center;
 }
+
+.create-form {
+  background: #6d6e71;
+}

@@ -10,3 +10,6 @@ class PasswordForm(ModelForm): #inherit information from ModelForm
 # def __init__(self, user, *args, **kwargs):
 #     self.user = user
 #     super(PasswordForm, self).__init__(*args, **kwargs)
+    # self.fields['website'].widget.attrs['placeholder'] = 'Enter Website'
+    # self.fields['username'].widget.attrs['placeholder'] = 'Enter Username'
+    # self.fields['password'].widget.attrs['placeholder'] = 'Enter Password'

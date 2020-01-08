@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 <!-- bringing in base.html template -->
 
+{% load static %}
+<!-- load static allows you to pull in content from the static folder (like images) -->
+
 {% block title %} | Welcome {% endblock %}
 
 <!-- input code after block content to get it to show in browser-->
@@ -13,17 +16,30 @@
 <!-- Showcase -->
  <section id="showcase">
    <div class="container text-center">
-     <div class="home-search p-5">
-       <div class="overlay p-5">
-         <h1 class="display-4 mb-4">
-           Welcome to the Password Vault
+     <div class="intro-index">
+
+       <div class="showcase-image">
+         <img class="img-responsive" width="100%" height="auto" src="{% static 'img/redvault.png' %}" alt="red vault background">
+       </div>
+         <h1 class="text-white">
+           Welcome to the Vault
          </h1>
-         <p class="intro">Keep all of your login information safe and organized in one place. Whether you choose to store your personally created passwords or generate a random new password, your information will stay safe in your own personal vault.</p>
-<!-- form for registering or logging in  -->
+         <p class="intro text-white">Keep all of your login information safe and organized in one place. Whether you choose to store your personally created passwords or generate a random new password, your information will stay safe in your own personal vault.</p>
+
        </div>
      </div>
-   </div>
  </section>
+
+ <!-- <section id="intro-jumbotron">
+   <div class="container">
+     <div class="jumbotron" style="background-image: url(https://imgur.com/lAi7mFT); background-size: 100% 100%">
+       <h1 class="text-white">
+         Welcome to the Vault
+       </h1>
+       <p class="intro text-white">Keep all of your login information safe and organized in one place. Whether you choose to store your personally created passwords or generate a random new password, your information will stay safe in your own personal vault.</p>
+     </div>
+   </div>
+ </section> -->
 
  <section id="services" class="py-5 bg-secondary text-white">
    <div class="container">
