@@ -17,5 +17,5 @@ urlpatterns = [ #creating a list for accessing each page
     # path('create', views.create, name='create'),
     # removed this path because I'm including the create view on the index/passwords page (the create and show all passwords are in the same route since they're on the same page)
 
-    path('delete/<str:password_id', views.delete, name='delete'),
+    path('delete/<str:password_id>', views.delete, name='delete'),
 ]
