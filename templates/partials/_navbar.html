@@ -13,11 +13,12 @@
 
       <ul class="navbar-nav">
         <!-- setting up conditional for link in navbar so if you're on that page it will stay highlighted-->
+        {% if user.is_authenticated %}
         <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
           <!-- create link that takes you to index when Home is clicked -->
           <a class="nav-link" href="{% url 'index' %}">Home</a>
         </li>
-
+        {% endif %}
         <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
           <!-- create link for about  -->
           <!-- <a class="nav-link" href="{% url 'about' %}">About</a>
