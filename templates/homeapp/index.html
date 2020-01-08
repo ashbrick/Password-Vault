@@ -14,53 +14,57 @@
 {% include 'partials/_alerts.html' %}
 
 <!-- Showcase -->
- <section id="showcase">
+ <!-- <section id="showcase">
    <div class="container text-center">
      <div class="intro-index">
 
-       <div class="showcase-image">
-         <img class="img-responsive" width="100%" height="auto" src="{% static 'img/redvault.png' %}" alt="red vault background">
-       </div>
+       <div class="showcase-image" id="bg" style="background-image: url('{% static 'img/redvault.png' %}')">
+         <!-- <img class="img-responsive" width="100%" height="100%" style="background-image: url('{% static 'img/showcase_red_vault.png' %}')" alt="red vault background"> -->
+         <!-- <h1 class="text-white">
+           Welcome to the Vault
+         </h1>
+         <p class="align-center text-white">Keep all of your login information safe and organized in one place. Whether you choose to store your personally created passwords or generate a random new password, your information will stay safe in your own personal vault.</p> -->
+
+
+       <!-- </div>
          <h1 class="text-white">
            Welcome to the Vault
          </h1>
          <p class="intro text-white">Keep all of your login information safe and organized in one place. Whether you choose to store your personally created passwords or generate a random new password, your information will stay safe in your own personal vault.</p>
 
-       </div>
-     </div>
- </section>
-
- <!-- <section id="intro-jumbotron">
+       </div> -->
+<br>
+ <section id="intro-jumbotron">
    <div class="container">
-     <div class="jumbotron" style="background-image: url(https://imgur.com/lAi7mFT); background-size: 100% 100%">
+     <div class="jumbotron" style="background-image: url('{% static 'img/redvault.png' %}')"; background-size: 100% 100%">
        <h1 class="text-white">
          Welcome to the Vault
        </h1>
-       <p class="intro text-white">Keep all of your login information safe and organized in one place. Whether you choose to store your personally created passwords or generate a random new password, your information will stay safe in your own personal vault.</p>
+       <p class="intro text-white"><i>Keep all of your login information safe and organized in one place. </i></p>
      </div>
    </div>
- </section> -->
+ </section>
 
  <section id="services" class="py-5 bg-secondary text-white">
    <div class="container">
      <div class="row text-center">
        <div class="col-md-4">
-         <i class="fas fa-comment fa-4x mr-4"></i>
+         <i class="mr-4"></i>
          <hr>
          <h3>Organize</h3>
-         <p>View all of your usernames and passwords in one place. They're automatically alphabetized according to their respective sites.</p>
+         <p>View all of your usernames and passwords in one place. </p>
        </div>
        <div class="col-md-4">
-         <i class="fas fa-home fa-4x mr-4"></i>
+         <i class="mr-4"></i>
          <hr>
-         <h3>Keep Safe</h3>
-         <p>Any passwords that you create are automatically encrypted to keep your information safe. No one but you will be able to see your passwords.</p>
+         <h3>Create & Delete</h3>
+         <p>Register to create or delete passwords easily in the privacy of your personal password vault.</p>
        </div>
        <div class="col-md-4">
-         <i class="fas fa-suitcase fa-4x mr-4"></i>
+         <i class="mr-4"></i>
          <hr>
-         <h3>Create, Edit, Delete</h3>
-         <p>You can safely create your own password or generate a random one. Then you have the ability to edit and/or delete at any time.</p>
+         <h3>Coming Soon</h3>
+         <p>Generate a random, secure password that will automatically be added to your password list.</p>
        </div>
      </div>
    </div>
