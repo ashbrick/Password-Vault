@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 
 #this will allow us to fetch passwords based on the model, then insert into template in order to loop through passwords in database
-from .models import Password #bring in the Password model
+from .models import * #bring in all models
 from django.views.generic.edit import UpdateView
 from .forms import PasswordForm
 from django.contrib import messages
@@ -16,10 +16,18 @@ def index(request): #main passwords page
     #fetch passwords from database by creating a variable and setting it to the variable name
     passwords = Password.objects.all() #shows all password info from db
 
+    form = PasswordForm()
+
+    if request.method == 'POST':
+        form = PasswordForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('passwords')
 
     #create a variable to pass in the passwords as parameter for the return render
     context = {
-     'passwords': passwords
+     'passwords': passwords,
+     'form':form
     }
     #load this template to show the index of all passwords
     return render(request, 'passwords/passwords.html', context)
@@ -27,23 +35,20 @@ def index(request): #main passwords page
 #==================
 #   CREATE: method for creating a password
 #==================
-def create(request):
-    print('============= 1111111111- testing')
-    form = PasswordForm()
-    if request.method == "POST":
-        print(' > > > > > > 22222222222- testing')
-        # website = request.POST['website']
-        # username = request.POST['username']
-        # password = request.POST['password']
-
-        form = PasswordForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('passwords')
-
-    context = {'form':form}
-    print('< < < < < < < 3333333333333- testing')
-    return render(request, 'passwords/create.html', context)
+# def create(request):
+#     print('============= 1111111111- testing')
+#     form = PasswordForm()
+#     if request.method == "POST":
+#         print(' > > > > > > 22222222222- testing')
+#
+#         form = PasswordForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('passwords')
+#
+#     context = {'form':form}
+#     print('< < < < < < < 3333333333333- testing')
+#     return render(request, 'passwords/create.html', context)
 
 
 #==================
@@ -67,8 +72,9 @@ def password_show(request, password_id): #individual password page, setting the 
 # def password_edit(request):
 #     return render(request, 'passwords/password_edit.html')
 
-def passwordEdit(request, pk):
-    password = Password.objects.get(password_id=pk)
+def passwordEdit(request):
+# def passwordEdit(request, pk):
+    # password = Password.objects.get(password_id=pk)
     # # password = get_object_or_404(Password, pk=password_id)
     # form = PasswordForm(instance=password)
     #
@@ -80,7 +86,8 @@ def passwordEdit(request, pk):
     #
     # context = {'form':form}
 
-    return render(request, 'passwords/password_edit.html', {'form':form})
+    # return render(request, 'passwords/password_edit.html', {'form':form})
+    return render(request, 'passwords/password_edit.html')
 
 # def edit(request, pk, template_name='passwords/edit.html'):
 #     password = get_object_or_404(Password, pk=password_id)
@@ -94,13 +101,19 @@ def passwordEdit(request, pk):
 #   DELETE: method for deleting a password
 #==================
 def delete(request, password_id):
+    # password = Password.objects.filter(password_id)
+    password = get_object_or_404(Password, pk=password_id)
+    # form = PasswordForm(request, instance=password)
     if request.method == 'POST':
-        password = Password.objects.get(password_id=password_id)
+
+        # password = Password.objects.get(password_id=password_id)
+
         password.delete()
         messages.success(request, 'Password has been deleted')
         return redirect('passwords')
-    else:
-        return render(request, 'passwords/passwords.html')
+
+    context = {'password':password}
+    return render(request, 'passwords/delete.html', context)
 
 # def delete(request, pk, template_name='passwords/password.html'):
 #     password = get_object_or_404(Password, pk=password_id)

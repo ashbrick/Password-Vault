@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | Delete {% endblock %}
+{% block content %}
+
+<p>Are you sure you want to delete "{{ password }}"?</p>
+
+<form class="" action="{% url 'delete' password.id %}" method="POST">
+  {% csrf_token %}
+
+  <a href="{% url 'passwords' %}">Cancel</a>
+
+  <input type="submit" name="Confirm">
+</form>
+
+{% endblock %}

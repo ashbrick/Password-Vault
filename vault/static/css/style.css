@@ -7,3 +7,42 @@ button, a, .btn {
   text: black;
   text-align:center;
 }
+
+:root {
+  --main-font: 'Allerta Stencil', sans-serif;
+  --text-font: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, a, button, th {
+  font-family: var(--main-font);
+}
+
+p, i, input {
+  font-family: var(--text-font);
+}
+
+/* #showcase img {
+  max-width: 100%;
+  margin: 0;
+} */
+
+/* #bg{
+    background-size: 100%;
+    max-width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+} */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* height: 20px; */
+  line-height: 20px;
+}
+
+.social-icons > a:hover {
+  cursor: pointer;
+  color: #F2C57C;
+}

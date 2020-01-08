@@ -20,27 +20,32 @@
 <!-- ALERTS -->
 {% include 'partials/_alerts.html' %}
 
+
+
 <!-- Password Option Cards -->
   <section id="dash-options" class="py-4">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2>Welcome, {{ user }}!</h2>
+          <h2>Welcome,  <span class="text-secondary">{{ user }}</span></h2>
+          <p>
+            <i>You can manage your passwords from here in the dashboard or go to <strong> Enter Vault </strong> and view all passwords.</i>
+          </p>
           <br>
         </div>
 <!-- Option Card: Create -->
-        <div class="col-md-6 col-lg-4 mb-4">
+        <div class="col-md-6 col-lg-6 mb-4">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body bg-light">
               <h5 class="card-title">Create A New Password</h5>
-              <p class="card-text">Create your own password and enter it manually.</p>
-              <a href="{% url 'create' %}" class="btn btn-warning">Create</a>
+              <p class="card-text">Keep track of your usernames and passwords for specific websites.</p>
+              <a href="{% url 'passwords' %}" style="width:100%" class="btn btn-success">Create</a>
             </div>
           </div>
         </div>
 
 <!-- Option Card: Edit -->
-        <div class="col-md-6 col-lg-4 mb-4">
+        <!-- <div class="col-md-6 col-lg-4 mb-4">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Edit Password</h5>
@@ -48,15 +53,15 @@
               <a href="#" class="btn btn-warning">Edit</a>
             </div>
           </div>
-        </div>
+        </div> -->
 
 <!-- Option Card: Delete -->
-        <div class="col-md-6 col-lg-4 mb-4">
+        <div class="col-md-6 col-lg-6 mb-4">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body border-dark bg-light">
               <h5 class="card-title">Delete Password</h5>
               <p class="card-text">Clear all password information, including the username and website.</p>
-              <a href="{% url 'passwords' %}" class="btn btn-warning">Delete</a>
+              <a href="{% url 'passwords' %}" style="width:100%" class="btn btn-danger">Delete</a>
             </div>
           </div>
         </div>
