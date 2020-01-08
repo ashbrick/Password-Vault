@@ -5,7 +5,7 @@ button, a, .btn {
 
 .delete-btn {
   text: black;
-  text-align:center;
+  text-align: center;
 }
 
 :root {
@@ -25,7 +25,6 @@ p, i, input {
   max-width: 100%;
   margin: 0;
 } */
-
 /* #bg{
     background-size: 100%;
     max-width: 100%;
@@ -42,7 +41,7 @@ footer {
   line-height: 20px;
 }
 
-.social-icons > a:hover {
+.social-icons>a:hover {
   cursor: pointer;
   color: #F2C57C;
 }
